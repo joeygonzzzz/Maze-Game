@@ -79,10 +79,10 @@ const stepThroughCell = (row, column) => {
 
     //Assemble randomly-ordered list of neighbors
     const neighbors = shuffle([
-        [row - 1, column, 'up'],
+        //[row - 1, column, 'up'],
         [row, column + 1, 'right'],
-        [row +1, column, 'down'],
-        [row, column - 1, 'left']
+        //[row +1, column, 'down'],
+        //[row, column - 1, 'left']
     ]);
 
     // For each neighbor.....
@@ -99,7 +99,11 @@ const stepThroughCell = (row, column) => {
         }
 
     //remove a wall from either horizon or vert
-
+        if(direction === 'left') {
+            verticals[row][column - 1] = true;
+        } else if (direction === 'right') {
+            verticals[row][column] = true;
+        }
     };
 
     // visit that next cell
