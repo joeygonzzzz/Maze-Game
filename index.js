@@ -10,6 +10,8 @@ const cells = 3;
 const width = 600;
 const height = 600;
 
+const unitLength = width / cells;
+
 const engine = Engine.create();
 const { world } = engine;
 const render = Render.create({
@@ -117,12 +119,21 @@ const stepThroughCell = (row, column) => {
 
 stepThroughCell(startRow, startColumn);
 
-horizontals.forEach((row) => {
-    row.forEach((open) => {
+horizontals.forEach((row, rowIndex) => {
+    row.forEach((open, columnIndex) => {
         if (open === true) {
             return;
         }
 
-        const wall = Bodies.rectangle();
+        const wall = Bodies.rectangle(
+            columnIndex * unitLength + unitLength / 2,
+            rowIndex * unitLength + unitLength,
+            unitLength, 
+            10,
+            {
+                isStatic: true
+            }
+        );
+        World.add(world, wall);
     });
 });
