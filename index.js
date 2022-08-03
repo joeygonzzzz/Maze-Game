@@ -9,8 +9,8 @@ const {
 } = Matter;
 
 
-const cellsHorizontal = 14;
-const cellsVertical = 13;
+const cellsHorizontal = 13;
+const cellsVertical = 6;
 const width = window.innerWidth;
 const height = window.innerHeight;
 
